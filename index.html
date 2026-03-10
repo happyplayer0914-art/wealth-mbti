@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <!-- 📊 구글 애널리틱스 (CCTV) - 신규 프로젝트용으로 나중에 ID만 교체하세요 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TFQW5QDPS4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-TFQW5QDPS4');
+    </script>
+
+    <!-- 💰 카카오 애드핏 & 구글 애드센스 -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4798854035184105" crossorigin="anonymous"></script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <!-- SEO 및 소셜 공유 태그 -->
+    <title>내 지갑 수호령 소환 | 금전운 재테크 MBTI 테스트</title>
+    <meta name="description" content="나의 소비 습관과 재테크 성향을 분석해서 내 지갑을 지키는 판타지 수호령을 소환해보세요!">
+    <meta name="keywords" content="MBTI, 금전운 테스트, 재테크 성향, 소비 습관, 심리 테스트, 수호령 테스트">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="내 지갑을 지키는 수호령은? | 금전운 MBTI">
+    <meta property="og:description" content="12가지 질문으로 알아보는 나의 소비/재테크 성향과 환상의 수호령 소환!">
+    <!-- 이미지 경로는 추후 마스터님이 만든 썸네일로 변경하세요 -->
+    <meta property="og:image" content="https://placehold.co/800x400/0f172a/fbbf24?text=Wealth+Guardian+MBTI">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;600;700;800;900&display=swap');
+        
+        :root {
+            --primary-glow: rgba(251, 191, 36, 0.5); /* Gold Glow */
+            --bg-dark: #020617; /* Deepest Navy */
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-dark);
+            font-family: 'Pretendard', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            color: white;
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        #app-container {
+            position: relative;
+            width: 100%;
+            max-width: 420px;
+            height: 100vh;
+            max-height: 850px;
+            background: #0f172a;
+            box-shadow: 0 0 100px rgba(0, 0, 0, 0.9), inset 0 0 50px rgba(251, 191, 36, 0.05);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            z-index: 10;
+        }
+
+        @media (min-width: 640px) {
+            #app-container {
+                height: 85vh;
+                border-radius: 36px;
+                border: 1px solid rgba(251, 191, 36, 0.2);
+                margin: 10px 0;
+            }
+        }
+
+        #bg-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
+        .vignette { position: absolute; inset: 0; background: radial-gradient(circle at center, transparent 20%, var(--bg-dark) 100%); z-index: 2; pointer-events: none; }
+        
+        #ui-layer { position: relative; z-index: 10; width: 100%; height: 100%; display: flex; flex-direction: column; }
+        
+        .screen { position: absolute; inset: 0; display: none; flex-direction: column; padding: 24px; overflow-y: auto; scrollbar-width: none; }
+        .screen::-webkit-scrollbar { display: none; }
+        .screen.active { display: flex; }
+
+        .fade-in { animation: fadeIn 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
+        .slide-up { animation: slideUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
+        .pulse-slow { animation: pulseSlow 3s infinite alternate; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes pulseSlow { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(1.05); opacity: 1; } }
+
+        .glass-panel { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(251, 191, 36, 0.15); border-radius: 24px; }
+        
+        .option-btn { width: 100%; background: linear-gradient(145deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.95) 100%); border: 1px solid rgba(251, 191, 36, 0.3); border-radius: 20px; padding: 20px; text-align: left; transition: all 0.3s ease; display: flex; align-items: center; gap: 16px; cursor: pointer; }
+        .option-btn:hover, .option-btn:active { transform: translateY(-2px); border-color: rgba(251, 191, 36, 0.9); box-shadow: 0 8px 25px rgba(251, 191, 36, 0.2); background: linear-gradient(145deg, rgba(51, 65, 85, 0.9) 0%, rgba(30, 41, 59, 0.95) 100%); }
+
+        .text-gradient-gold { background: linear-gradient(to right, #fde047, #f59e0b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        .progress-track { background: rgba(255, 255, 255, 0.05); border-radius: 99px; height: 6px; overflow: hidden; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, #fcd34d, #f59e0b); border-radius: 99px; transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 0 10px rgba(245, 158, 11, 0.8); }
+
+        .ad-container { width: 100%; max-width: 420px; min-height: 50px; background: rgba(255, 255, 255, 0.02); display: flex; align-items: center; justify-content: center; font-size: 11px; color: #475569; border: 1px dashed rgba(255, 255, 255, 0.05); margin: 5px 0; border-radius: 12px; z-index: 20; position: relative;}
+    </style>
+</head>
+<body>
+
+    <!-- 상단 배너 광고 영역 -->
+    <div class="ad-container">
+        <ins class="kakao_ad_area" style="display:none;" 
+         data-ad-unit    = "DAN-ByNkcek86incz89m" 
+         data-ad-width   = "320" 
+         data-ad-height  = "50"></ins> 
+        <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+    </div>
+
+    <div id="app-container">
+        <!-- 배경 캔버스 (황금빛 입자) -->
+        <canvas id="bg-canvas"></canvas>
+        <div class="vignette"></div>
+
+        <div id="ui-layer">
+            
+            <!-- 1. 시작 화면 -->
+            <div id="screen-start" class="screen active justify-center items-center text-center">
+                <div class="relative mb-8 pulse-slow">
+                    <div class="absolute inset-0 bg-yellow-500 rounded-full blur-[60px] opacity-30"></div>
+                    <span class="text-8xl relative z-10 drop-shadow-[0_0_20px_rgba(251,191,36,0.8)]">🪙</span>
+                </div>
+                <p class="text-yellow-500 font-bold tracking-[0.3em] text-xs mb-3 uppercase">Wealth Guardian Test</p>
+                <h1 class="text-4xl font-black text-white mb-6 leading-tight drop-shadow-lg">
+                    내 지갑을 지키는<br><span class="text-gradient-gold">수호령 소환</span>
+                </h1>
+                <p class="text-slate-400 text-sm mb-12 leading-relaxed">
+                    당신의 소비 습관과 재테크 성향 속에<br>어떤 영물이 잠들어 있는지 확인해보세요.
+                </p>
+                <button onclick="startGame()" class="w-full py-5 rounded-2xl bg-gradient-to-r from-yellow-500 to-yellow-600 text-slate-900 font-black text-lg hover:shadow-[0_0_30px_rgba(251,191,36,0.4)] transition-all active:scale-95 mb-4">
+                    금고 문 열기
+                </button>
+                
+                <!-- 📖 도감 버튼 추가 -->
+                <button onclick="switchScreen('screen-encyclopedia')" class="w-full py-4 rounded-2xl bg-transparent border border-yellow-500/30 text-yellow-500 font-bold text-sm hover:bg-yellow-900/30 transition-all active:scale-95 flex justify-center items-center gap-2">
+                    <span>📜</span> 수호령 대도서관 열람 (MBTI)
+                </button>
+            </div>
+
+            <!-- 2. 질문 화면 -->
+            <div id="screen-question" class="screen">
+                <div class="pt-4 pb-8 fade-in">
+                    <p id="q-floor" class="text-center text-yellow-500 font-bold text-xs tracking-widest uppercase mb-6">Phase 1. 소비의 기원</p>
+                    
+                    <div class="mb-8">
+                        <div class="flex justify-between text-xs font-bold text-slate-400 mb-2">
+                            <span id="q-progress-text">Question 1 / 12</span>
+                        </div>
+                        <div class="progress-track">
+                            <div id="q-progress-bar" class="progress-fill" style="width: 0%"></div>
+                        </div>
+                    </div>
+
+                    <h2 id="q-text" class="text-2xl md:text-[22px] font-extrabold text-white leading-snug mb-10 break-keep min-h-[90px] flex items-center">
+                        질문 텍스트
+                    </h2>
+
+                    <div class="space-y-4">
+                        <button onclick="handleAnswer('A')" class="option-btn group">
+                            <span id="q-icon-a" class="text-3xl filter drop-shadow-md group-hover:scale-110 transition-transform">✨</span>
+                            <span id="q-text-a" class="text-[15px] font-semibold text-slate-200 leading-relaxed">선택지 A</span>
+                        </button>
+                        <button onclick="handleAnswer('B')" class="option-btn group">
+                            <span id="q-icon-b" class="text-3xl filter drop-shadow-md group-hover:scale-110 transition-transform">🔮</span>
+                            <span id="q-text-b" class="text-[15px] font-semibold text-slate-200 leading-relaxed">선택지 B</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. 로딩 화면 -->
+            <div id="screen-loading" class="screen justify-center items-center text-center">
+                <div class="relative w-32 h-32 mb-8 flex items-center justify-center">
+                    <div class="absolute inset-0 border-4 border-yellow-500/20 rounded-full"></div>
+                    <div class="absolute inset-0 border-4 border-yellow-400 rounded-full border-t-transparent animate-spin"></div>
+                    <span class="text-5xl animate-pulse">📜</span>
+                </div>
+                <h2 class="text-xl font-bold text-white mb-3">운명의 족자 해독 중...</h2>
+                <p class="text-sm text-yellow-500/80">당신을 따르는 수호령을 소환합니다</p>
+                <div class="w-48 mt-8 progress-track mx-auto">
+                    <div id="loading-bar" class="progress-fill" style="width: 0%"></div>
+                </div>
+            </div>
+
+            <!-- 4. 결과 화면 -->
+            <div id="screen-result" class="screen pb-12">
+                <div class="slide-up">
+                    <div class="text-center pt-6 pb-8">
+                        <p class="text-yellow-500 font-bold tracking-widest text-[10px] mb-2 uppercase">Your Guardian Spirit</p>
+                        <div id="res-rank" class="text-3xl font-black text-slate-400 mb-2">RANK S</div>
+                        <div id="res-emoji" class="text-8xl mb-4 filter drop-shadow-[0_0_30px_rgba(251,191,36,0.3)]">🐉</div>
+                        <p id="res-mbti" class="text-slate-500 font-black tracking-[0.2em] text-sm mb-2">ENTJ</p>
+                        <h2 id="res-title" class="text-3xl font-extrabold text-gradient-gold mb-2 break-keep">황금을 지배하는 흑룡</h2>
+                    </div>
+
+                    <div class="glass-panel p-5 mb-6 border-l-4 border-l-yellow-400 shadow-[0_4px_20px_rgba(251,191,36,0.1)]">
+                        <h3 class="text-yellow-400 font-bold text-[11px] uppercase tracking-wider mb-2 flex items-center"><span class="mr-2">⚖️</span> 수호령의 특징</h3>
+                        <p id="res-desc" class="text-slate-200 text-sm leading-[1.7] break-keep">설명 텍스트</p>
+                    </div>
+
+                    <!-- 💡 수호령의 일침 및 행운 요소 추가 -->
+                    <div class="glass-panel p-5 mb-6 border-l-4 border-l-indigo-400 shadow-[0_4px_20px_rgba(99,102,241,0.15)]">
+                        <h3 class="text-indigo-400 font-bold text-[11px] uppercase tracking-wider mb-2 flex items-center"><span class="mr-2">💡</span> 수호령의 뼈때리는 조언</h3>
+                        <p id="res-advice" class="text-white font-bold text-sm mb-3 break-keep">조언 텍스트</p>
+                        <div class="flex gap-4 pt-3 border-t border-indigo-500/20">
+                            <div>
+                                <p class="text-indigo-300 text-[10px] font-bold uppercase mb-1">행운의 컬러</p>
+                                <p id="res-color" class="text-slate-200 text-xs">컬러</p>
+                            </div>
+                            <div>
+                                <p class="text-indigo-300 text-[10px] font-bold uppercase mb-1">행운의 숫자</p>
+                                <p id="res-number" class="text-slate-200 text-xs">숫자</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4 mb-8">
+                        <div class="glass-panel p-4 text-center bg-gradient-to-b from-blue-900/20 to-transparent">
+                            <p class="text-blue-400 text-[10px] font-bold uppercase tracking-wider mb-2">돈이 모이는 듀오</p>
+                            <div id="res-best-emoji" class="text-4xl mb-1">☁️</div>
+                            <p id="res-best-title" class="text-white font-bold text-[11px] break-keep">낭만 구름양</p>
+                        </div>
+                        <div class="glass-panel p-4 text-center bg-gradient-to-b from-red-900/20 to-transparent">
+                            <p class="text-red-400 text-[10px] font-bold uppercase tracking-wider mb-2">지갑 털리는 듀오</p>
+                            <div id="res-worst-emoji" class="text-4xl mb-1">🐢</div>
+                            <p id="res-worst-title" class="text-white font-bold text-[11px] break-keep">금고지기 거북이</p>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel p-6 mb-8">
+                        <h3 class="text-slate-300 font-bold text-xs uppercase tracking-[0.2em] mb-6 text-center">수호령 스탯 분석</h3>
+                        <div id="stats-container" class="space-y-5"></div>
+                    </div>
+
+                    <!-- 🛒 쿠팡 파트너스 배너 (수호령 맞춤형) -->
+                    <div id="coupang-banner-container" class="mb-6"></div>
+
+                    <!-- 🔥 트래픽 무한 복사를 위한 '전작 크로스 링킹' 버튼 (링크 수정됨) -->
+                    <button onclick="window.open('https://rpg-mbti-test.vercel.app/', '_blank')" class="w-full py-4 mb-8 bg-slate-800 hover:bg-slate-700 border border-slate-600 text-slate-200 rounded-xl font-bold text-sm shadow-lg transition-all active:scale-95 flex items-center justify-center gap-2">
+                        <span>⚔️</span> 나의 RPG 길드장 직업도 알아보기
+                    </button>
+
+                    <div class="space-y-3">
+                        <button onclick="copyLink()" class="w-full py-4 bg-yellow-500 hover:bg-yellow-400 text-slate-900 rounded-xl font-black text-base shadow-[0_0_20px_rgba(251,191,36,0.4)] transition-all active:scale-95 flex justify-center items-center gap-2">
+                            <span>🔗</span> 수호령 결과 복사/공유하기
+                        </button>
+                        <button onclick="location.reload()" class="w-full py-4 bg-transparent border border-slate-700 text-slate-400 hover:text-white rounded-xl font-bold text-sm transition-all active:scale-95">
+                            다시 소환하기
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. 대도서관 (SEO 및 수익화용 도감 스크린 추가) -->
+            <div id="screen-encyclopedia" class="screen pb-12">
+                <div class="slide-up">
+                    <button onclick="switchScreen('screen-start')" class="mb-6 text-yellow-500 font-bold text-sm flex items-center hover:text-yellow-400 transition-colors">
+                        ← 금고 입구로 돌아가기
+                    </button>
+                    
+                    <h1 class="text-2xl font-extrabold text-white mb-2">수호령 대도서관</h1>
+                    <p class="text-slate-400 text-sm mb-8">16가지 금전운 수호령들의 성향 분석 아카이브입니다.</p>
+
+                    <div id="encyclopedia-content" class="space-y-6">
+                        <!-- 동적으로 자바스크립트에서 채워집니다 -->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 하단 배너 광고 영역 -->
+    <div class="ad-container">
+        <ins class="kakao_ad_area" style="display:none;" 
+         data-ad-unit    = "DAN-b36XXP3qWKQV4DIK" 
+         data-ad-width   = "320" 
+         data-ad-height  = "50"></ins> 
+        <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+    </div>
+
+    <!-- 토스트 메시지 -->
+    <div id="toast" class="fixed bottom-10 left-1/2 transform -translate-x-1/2 bg-slate-800 text-yellow-400 px-6 py-3 rounded-full text-sm font-bold opacity-0 transition-opacity duration-300 pointer-events-none z-[100] border border-yellow-500/50 shadow-2xl">
+        링크가 성공적으로 복사되었습니다! 🪙
+    </div>
+
+    <script>
+        // --- Golden Canvas Background ---
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let particles = [];
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        for(let i=0; i<50; i++) {
+            particles.push({ 
+                x: Math.random() * width, y: Math.random() * height, 
+                r: Math.random() * 2 + 0.5, 
+                vy: Math.random() * 0.8 + 0.2, vx: (Math.random() - 0.5) * 0.5, 
+                alpha: Math.random() * 0.5 + 0.2, phase: Math.random() * Math.PI * 2 
+            });
+        }
+
+        function drawBackground() {
+            ctx.clearRect(0, 0, width, height);
+            const time = Date.now() * 0.002;
+            particles.forEach(p => {
+                p.y -= p.vy; p.x += p.vx;
+                if(p.y < -10) p.y = height + 10;
+                if(p.x < -10) p.x = width + 10;
+                if(p.x > width + 10) p.x = -10;
+                const currentAlpha = p.alpha * (0.5 + Math.sin(time + p.phase) * 0.5);
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(251, 191, 36, ${currentAlpha})`; // Gold particles
+                ctx.shadowBlur = 10; ctx.shadowColor = "rgba(251, 191, 36, 0.8)";
+                ctx.fill(); ctx.shadowBlur = 0;
+            });
+            requestAnimationFrame(drawBackground);
+        }
+        drawBackground();
+
+        // --- Logic & Data ---
+        let qIndex = 0;
+        let scores = { E:0, I:0, S:0, N:0, T:0, F:0, J:0, P:0 };
+
+        const questions = [
+            { floor: "소비의 시작", q: "길을 걷다 뜻밖의 꽁돈 10만 원을 주웠다!", a: "'오늘 내가 쏜다!' 친구들을 불러 맛있는 걸 먹는다.", b: "'나이스' 누구에게도 말하지 않고 비상금 계좌에 넣는다.", vA: "E", vB: "I", iconA: "🍻", iconB: "🤫" },
+            { floor: "위기 대처", q: "극도로 스트레스를 받은 날, 나의 금융 치료는?", a: "핫플레이스 카페나 쇼핑몰을 돌아다니며 돈을 쓴다.", b: "집에서 맛있는 배달 음식 시키고 게임/취미에 결제한다.", vA: "E", vB: "I", iconA: "🛍️", iconB: "🎮" },
+            { floor: "지출의 흐름", q: "내 통장에서 돈이 가장 많이 빠져나가는 곳은?", a: "친구들과의 모임, 경조사, 데이트 비용.", b: "나만의 취미 생활, 덕질, 장비 업그레이드 비용.", vA: "E", vB: "I", iconA: "🥂", iconB: "🎧" },
+            { floor: "선택의 기로", q: "쇼핑몰에서 꽤 비싼 물건을 살 때 당신은?", a: "별점 1점짜리 후기부터 최저가까지 꼼꼼하게 비교한다.", b: "디자인에 꽂히고 내 느낌이 오면 일단 장바구니에 담는다.", vA: "S", vB: "N", iconA: "📊", iconB: "✨" },
+            { floor: "상상의 나래", q: "로또 1등에 당첨되는 상상을 한다면?", a: "세금 떼면 얼마지? 실수령액 계산과 예금 금리부터 알아본다.", b: "이미 강남에 빌딩을 세우고 요트를 타고 있는 상상을 한다.", vA: "S", vB: "N", iconA: "🧮", iconB: "🛥️" },
+            { floor: "투자의 방향", q: "주식이나 재테크 종목을 고를 때 나의 기준은?", a: "기업의 재무제표와 과거 실적, 차트의 흐름을 확인한다.", b: "이 기업이 바꿀 미래의 비전과 스토리텔링에 이끌린다.", vA: "S", vB: "N", iconA: "📈", iconB: "🚀" },
+            { floor: "인간 관계", q: "친한 친구가 갑자기 돈을 빌려달라고 한다.", a: "무슨 일인지 정확한 이유와 언제 갚을 건지 상환일을 묻는다.", b: "많이 힘든가 보네... 걱정되는 마음에 일단 빌려주고 본다.", vA: "T", vB: "F", iconA: "🤔", iconB: "🥺" },
+            { floor: "소비 심리", q: "월급날, 사고 싶던 한정판 아이템이 눈앞에서 품절됐다.", a: "아쉽지만 즉시 비슷한 스펙의 다른 대체품을 빠르게 검색한다.", b: "너무 속상한 마음에 새로고침을 연타하며 미련을 버리지 못한다.", vA: "T", vB: "F", iconA: "🔍", iconB: "😭" },
+            { floor: "멘탈 관리", q: "내가 산 주식이나 코인이 하루아침에 폭락했다면?", a: "관련 뉴스를 찾아보며 하락의 원인을 이성적으로 분석한다.", b: "심장이 쿵쾅거리고 멘탈이 나가서 어플 자체를 삭제해버린다.", vA: "T", vB: "F", iconA: "📰", iconB: "💥" },
+            { floor: "자산 관리", q: "한 달 용돈이나 월급을 관리하는 나의 방식은?", a: "식비, 교통비, 저축 등 카테고리별로 예산을 정확히 쪼개둔다.", b: "일단 통장 잔고를 보면서 상황에 맞게 융통성 있게 쓴다.", vA: "J", vB: "P", iconA: "📑", iconB: "🌊" },
+            { floor: "여행의 묘미", q: "오랜만에 해외여행을 떠났다. 여행지에서의 지출은?", a: "미리 계획해둔 여행 경비 예산의 한도를 절대 넘지 않는다.", b: "'여행 왔는데 기분 내야지!' 생각보다 많은 돈을 긁고 돌아온다.", vA: "J", vB: "P", iconA: "🔒", iconB: "💸" },
+            { floor: "미래의 다짐", q: "새해를 맞아 재테크 목표를 세우는 당신의 모습은?", a: "'1년에 1천만 원 모으기' 구체적인 액수와 저축 플랜을 짠다.", b: "'올해는 작년보다 덜 쓰자...' 마음속으로 굳게 다짐만 한다.", vA: "J", vB: "P", iconA: "🎯", iconB: "🙏" }
+        ];
+
+        const resultsMap = {
+            "ENTJ": { title: "황금을 지배하는 흑룡", emoji: "🐉", rank: "S", desc: "철저한 통제력과 과감한 결단력으로 돈을 굴리는 타고난 투자자입니다. 돈의 흐름을 읽는 눈이 매서우며, 리스크를 감수하더라도 거대한 부를 쟁취하는 것을 즐깁니다.", advice: "가끔은 뒤를 돌아볼 줄 알아야 진짜 거물이 됩니다.", luckyColor: "블랙", luckyNum: "8", stats: { "투자과감성": 99, "계획성": 90, "충동소비": 15 }, best: { emoji: "☁️", title: "낭만 구름양" }, worst: { emoji: "🐢", title: "금고지기 거북이" } },
+            "INTJ": { title: "심연을 꿰뚫는 부엉이", emoji: "🦉", rank: "S", desc: "남들이 보지 못하는 장기적인 가치를 발견하는 냉철한 전략가입니다. 남들의 말에 휘둘리지 않고 본인만의 철저한 분석과 데이터로 자산을 불려 나갑니다.", advice: "완벽한 계획도 실행하지 않으면 종이 쪼가리일 뿐입니다.", luckyColor: "네이비", luckyNum: "4", stats: { "분석력": 99, "저축력": 85, "유행민감도": 10 }, best: { emoji: "🐬", title: "탐험가 돌고래" }, worst: { emoji: "🐸", title: "은두꺼비" } },
+            "INFP": { title: "낭만을 먹고 사는 구름양", emoji: "☁️", rank: "B", desc: "돈 자체보다는 돈으로 얻을 수 있는 행복과 의미를 더 중요하게 생각합니다. 예쁜 쓰레기(?)나 감성을 자극하는 아이템에 지갑이 가장 쉽게 열리는 편입니다.", advice: "감성 비용을 조금만 줄여도 통장이 훨씬 따뜻해집니다.", luckyColor: "파스텔 핑크", luckyNum: "7", stats: { "감성소비": 99, "물욕": 80, "예산통제력": 20 }, best: { emoji: "🦄", title: "무리를 이끄는 유니콘" }, worst: { emoji: "⚡", title: "쾌속의 금빛 치타" } },
+            "ESTP": { title: "쾌속의 금빛 치타", emoji: "⚡", rank: "A", desc: "고민보다 결제가 빠릅니다! 하이리스크 하이리턴을 즐기며, 유행하는 아이템은 무조건 먼저 써봐야 직성이 풀리는 화끈한 소비 요정입니다.", advice: "가속 페달에서 가끔은 발을 떼야 절벽으로 떨어지지 않습니다.", luckyColor: "레드", luckyNum: "3", stats: { "행동력": 99, "트렌드지수": 95, "인내심": 15 }, best: { emoji: "🐢", title: "금고지기 거북이" }, worst: { emoji: "☁️", title: "낭만 구름양" } },
+            "ISFJ": { title: "든든한 금고지기 거북이", emoji: "🐢", rank: "A+", desc: "안정성이 최고! 티끌 모아 태산을 실천하는 저축왕입니다. 위험한 투자보다는 차곡차곡 쌓이는 예적금 통장을 볼 때 가장 큰 행복을 느낍니다.", advice: "가끔은 나를 위한 작은 사치에 지갑을 열어도 괜찮습니다.", luckyColor: "베이지", luckyNum: "2", stats: { "방어력": 99, "절약정신": 95, "충동소비": 10 }, best: { emoji: "⚡", title: "쾌속의 금빛 치타" }, worst: { emoji: "🐉", title: "황금을 지배하는 흑룡" } },
+            "ISTJ": { title: "철두철미한 은두꺼비", emoji: "🐸", rank: "S", desc: "10원 단위까지 엑셀로 관리하는 인간 가계부입니다. 감정에 휘둘려 돈을 쓰는 일은 거의 없으며, 가장 완벽하고 효율적인 가성비 소비를 지향합니다.", advice: "가끔은 가성비보다 '가심비'가 인생을 윤택하게 만듭니다.", luckyColor: "실버", luckyNum: "1", stats: { "철저함": 99, "경제관념": 95, "유연성": 20 }, best: { emoji: "⚡", title: "쾌속의 금빛 치타" }, worst: { emoji: "🐬", title: "탐험가 돌고래" } },
+            "ISFP": { title: "유유자적 힐링 나무늘보", emoji: "🦥", rank: "B", desc: "복잡한 재테크나 주식 차트는 보기만 해도 머리가 아픕니다. 침대에 누워 맛있는 배달 음식을 시켜 먹는 '소확행'에 돈을 쓸 때가 제일 행복합니다.", advice: "누워서 배달앱만 켜지 말고 나가서 햇빛을 쬐세요!", luckyColor: "그린", luckyNum: "9", stats: { "소확행지수": 99, "귀차니즘": 90, "계획성": 15 }, best: { emoji: "🦄", title: "무리를 이끄는 유니콘" }, worst: { emoji: "🐉", title: "황금을 지배하는 흑룡" } },
+            "INTP": { title: "호기심 많은 은여우", emoji: "🦊", rank: "A", desc: "평소에는 짠돌이/짠순이 같지만, 본인이 꽂힌 특정 취미나 덕질 분야에는 상상 이상의 거금을 쾌척하는 극단적인 소비 패턴을 가졌습니다.", advice: "덕질 10%만 줄여도 우량주 1주를 더 살 수 있습니다.", luckyColor: "퍼플", luckyNum: "5", stats: { "덕력지수": 99, "호기심": 95, "사교비용": 10 }, best: { emoji: "🐉", title: "황금을 지배하는 흑룡" }, worst: { emoji: "🐶", title: "다 퍼주는 리트리버" } },
+            "ISTP": { title: "고독한 사냥꾼 매", emoji: "🦅", rank: "A+", desc: "불필요한 지출을 극도로 꺼리는 실용주의자입니다. 물건을 살 땐 남들의 후기보다 오직 스펙과 성능만을 따지며, 투자 역시 감정 없이 기계적으로 해냅니다.", advice: "혼자 다 하려고 하지 말고 가끔은 전문가의 말을 들어보세요.", luckyColor: "그레이", luckyNum: "6", stats: { "실용성": 99, "냉철함": 95, "감성소비": 5 }, best: { emoji: "🐶", title: "다 퍼주는 리트리버" }, worst: { emoji: "🐬", title: "탐험가 돌고래" } },
+            "ESFP": { title: "화려한 탕진 공작새", emoji: "🦚", rank: "B", desc: "인생은 한 번뿐! 버는 만큼, 아니 그 이상으로 즐겁게 돈을 씁니다. 친구들에게 한턱 쏘는 것도 좋아하고 예쁜 물건을 보면 참지 못하는 충동구매 마스터입니다.", advice: "오늘만 살 것처럼 긁다간 내일의 내가 굶습니다. 선저축 후지출!", luckyColor: "골드", luckyNum: "0", stats: { "욜로지수": 99, "친화력": 95, "잔고유지력": 5 }, best: { emoji: "🐢", title: "금고지기 거북이" }, worst: { emoji: "🦉", title: "심연을 꿰뚫는 부엉이" } },
+            "ENFP": { title: "몽환의 탐험가 돌고래", emoji: "🐬", rank: "A", desc: "물건을 소유하는 것보다 여행, 배움 등 '새로운 경험'에 돈을 쓰는 것을 가장 가치 있다고 여깁니다. 돈 관리는 서툴지만 어찌어찌 잘 살아가는 재주가 있습니다.", advice: "경험도 좋지만, 눈에 보이는 실물 자산도 가끔은 챙겨주세요.", luckyColor: "스카이블루", luckyNum: "3", stats: { "경험투자": 99, "낙천성": 90, "가계부작성": 10 }, best: { emoji: "🦉", title: "심연을 꿰뚫는 부엉이" }, worst: { emoji: "🐸", title: "철두철미한 은두꺼비" } },
+            "ENTP": { title: "눈치백단 금여우", emoji: "🦝", rank: "A+", desc: "정보력이 뛰어나고 눈치가 빨라 유망한 알트코인이나 밈 주식에 올라타 쏠쏠한 수익을 냅니다. 하지만 금방 질려해서 꾸준한 장기 투자는 힘들어합니다.", advice: "단기 수익에 눈멀지 말고 진득하게 묻어두는 연습을 하세요.", luckyColor: "오렌지", luckyNum: "7", stats: { "순발력": 99, "정보력": 90, "끈기": 15 }, best: { emoji: "🦌", title: "미래를 보는 숲의 사슴" }, worst: { emoji: "🐢", title: "금고지기 거북이" } },
+            "ESTJ": { title: "황금을 낳는 거위", emoji: "🦢", rank: "S", desc: "목표한 금액이 있으면 무슨 수를 써서라도 모으고야 마는 재테크 불도저입니다. 시간과 돈을 허투루 쓰는 것을 혐오하며, 효율성의 끝판왕을 달립니다.", advice: "휴식도 가장 좋은 투자입니다. 건강 챙기면서 돈 버세요.", luckyColor: "다크 그린", luckyNum: "8", stats: { "추진력": 99, "수익률": 95, "즉흥성": 10 }, best: { emoji: "🦊", title: "호기심 많은 은여우" }, worst: { emoji: "☁️", title: "낭만 구름양" } },
+            "ESFJ": { title: "다 퍼주는 리트리버", emoji: "🐶", rank: "A", desc: "내 물건은 안 사도 남들 생일 선물과 경조사비는 무조건 최고급으로 챙깁니다. 인맥이 곧 자산이라고 믿으며, 사람들 사이에서 돈을 쓸 때 행복을 느낍니다.", advice: "남들 챙기기 전에 내 노후 통장부터 먼저 챙겨야 합니다.", luckyColor: "옐로우", luckyNum: "2", stats: { "오지랖지수": 99, "인맥자산": 95, "나를위한소비": 20 }, best: { emoji: "🦥", title: "유유자적 힐링 나무늘보" }, worst: { emoji: "🦊", title: "호기심 많은 은여우" } },
+            "ENFJ": { title: "무리를 이끄는 유니콘", emoji: "🦄", rank: "A", desc: "단순히 돈을 모으는 것을 넘어, 돈이 의미 있는 곳에 쓰이길 원합니다. 주변 사람들에게 베푸는 것을 좋아하며, 가치 소비나 크라우드 펀딩에 지갑을 잘 엽니다.", advice: "모두를 구원하려다 내 지갑이 먼저 텅장될 수 있습니다.", luckyColor: "화이트", luckyNum: "1", stats: { "가치소비": 99, "영향력": 90, "이기심": 5 }, best: { emoji: "☁️", title: "낭만 구름양" }, worst: { emoji: "🦅", title: "고독한 사냥꾼 매" } },
+            "INFJ": { title: "미래를 보는 숲의 사슴", emoji: "🦌", rank: "A+", desc: "눈앞의 이익보다는 5년, 10년 뒤의 거대한 흐름을 보고 투자합니다. 겉보기엔 돈에 무관심해 보이지만 뒤에서 묵묵히 본인만의 거대한 성을 쌓고 있습니다.", advice: "생각만 하다가 좋은 타이밍을 놓칩니다. 과감해지세요!", luckyColor: "청록색", luckyNum: "4", stats: { "통찰력": 99, "인내심": 95, "충동소비": 10 }, best: { emoji: "🦝", title: "눈치백단 금여우" }, worst: { emoji: "⚡", title: "쾌속의 금빛 치타" } }
+        };
+
+        // 도감 생성 함수
+        function generateEncyclopedia() {
+            const container = document.getElementById('encyclopedia-content');
+            container.innerHTML = '';
+            for (const [mbti, data] of Object.entries(resultsMap)) {
+                container.innerHTML += `
+                    <article class="glass-panel p-6 border-t border-yellow-500/20">
+                        <header class="mb-4">
+                            <span class="text-yellow-500 font-bold tracking-widest text-xs uppercase">${mbti} 수호령</span>
+                            <h2 class="text-2xl font-black text-white mt-1 flex items-center gap-2">
+                                <span>${data.emoji}</span> ${data.title}
+                            </h2>
+                        </header>
+                        <section class="space-y-3 text-sm leading-relaxed text-slate-300 break-keep">
+                            <p><strong class="text-yellow-400">⚖️ 특징:</strong> ${data.desc}</p>
+                            <p><strong class="text-indigo-400">💡 조언:</strong> ${data.advice}</p>
+                            <p><strong class="text-blue-400">🤝 찰떡궁합:</strong> ${data.best.emoji} ${data.best.title} / <strong class="text-red-400">파국궁합:</strong> ${data.worst.emoji} ${data.worst.title}</p>
+                        </section>
+                    </article>
+                `;
+            }
+        }
+        // 초기화 시 도감 생성
+        generateEncyclopedia();
+
+        function switchScreen(screenId) {
+            document.querySelectorAll('.screen').forEach(el => el.classList.remove('active'));
+            const target = document.getElementById(screenId);
+            target.classList.add('active');
+            if(screenId === 'screen-result') target.scrollTop = 0;
+        }
+
+        function startGame() {
+            qIndex = 0; scores = { E:0, I:0, S:0, N:0, T:0, F:0, J:0, P:0 };
+            updateQuestion(); switchScreen('screen-question');
+        }
+
+        function updateQuestion() {
+            const q = questions[qIndex];
+            document.getElementById('q-floor').innerText = q.floor;
+            document.getElementById('q-progress-text').innerText = `Question ${qIndex + 1} / ${questions.length}`;
+            document.getElementById('q-progress-bar').style.width = `${((qIndex + 1) / questions.length) * 100}%`;
+            document.getElementById('q-text').innerText = q.q;
+            document.getElementById('q-icon-a').innerText = q.iconA;
+            document.getElementById('q-text-a').innerText = q.a;
+            document.getElementById('q-icon-b').innerText = q.iconB;
+            document.getElementById('q-text-b').innerText = q.b;
+
+            const qContainer = document.getElementById('screen-question').firstElementChild;
+            qContainer.classList.remove('fade-in'); void qContainer.offsetWidth; qContainer.classList.add('fade-in');
+        }
+
+        function handleAnswer(choice) {
+            const q = questions[qIndex];
+            scores[choice === 'A' ? q.vA : q.vB]++;
+            qIndex++;
+            if (qIndex < questions.length) updateQuestion(); else startLoading();
+        }
+
+        function startLoading() {
+            switchScreen('screen-loading');
+            let loadPercent = 0;
+            const bar = document.getElementById('loading-bar');
+            const interval = setInterval(() => {
+                loadPercent += Math.random() * 20 + 5;
+                if(loadPercent > 100) loadPercent = 100;
+                bar.style.width = `${loadPercent}%`;
+                if(loadPercent === 100) { clearInterval(interval); setTimeout(showResult, 800); }
+            }, 250);
+        }
+
+        function showResult() {
+            switchScreen('screen-result');
+            const m = (scores.E >= scores.I ? "E":"I") + (scores.S >= scores.N ? "S":"N") + (scores.T >= scores.F ? "T":"F") + (scores.J >= scores.P ? "J":"P");
+            const res = resultsMap[m] || resultsMap["ENTJ"];
+
+            // --- 🛒 쿠팡 파트너스 아이템 매핑 (추후 마스터님이 링크 수정) ---
+            const coupangData = {
+                "ENTJ": { url: "https://link.coupang.com/a/d0XVfo", text: "CEO의 품격, 최고급 몽블랑 만년필 보러가기" },
+                "INTJ": { url: "https://link.coupang.com/a/d0XVfo", text: "집중력 MAX, 노이즈 캔슬링 헤드폰 보러가기" },
+                "INFP": { url: "https://link.coupang.com/a/d0XVfo", text: "방구석 감성 충전, 오로라 무드등 보러가기" },
+                "ESTP": { url: "https://link.coupang.com/a/d0XVfo", text: "핵인싸템, 가장 힙한 팝업스토어 아이템 보러가기" },
+                "ISFJ": { url: "https://link.coupang.com/a/d0XVfo", text: "티끌 모아 태산! 귀여운 저금통 보러가기" },
+                "ISTJ": { url: "https://link.coupang.com/a/d0XVfo", text: "1원도 놓치지 않는 완벽한 엑셀 가계부 보러가기" },
+                "ISFP": { url: "https://link.coupang.com/a/d0XVfo", text: "침대 밖은 위험해, 대형 빈백 쿠션 보러가기" },
+                "INTP": { url: "https://link.coupang.com/a/d0XVfo", text: "호기심 해결! 베스트셀러 경제 도서 보러가기" },
+                "ISTP": { url: "https://link.coupang.com/a/d0XVfo", text: "극강의 가성비, 다기능 멀티툴 보러가기" },
+                "ESFP": { url: "https://link.coupang.com/a/d0XVfo", text: "홈파티의 제왕, 노래방 블루투스 마이크 보러가기" },
+                "ENFP": { url: "https://link.coupang.com/a/d0XVfo", text: "새로운 경험, 즉흥 여행용 레디백 보러가기" },
+                "ENTP": { url: "https://link.coupang.com/a/d0XVfo", text: "트렌드 최전선, 신상 스마트 기기 보러가기" },
+                "ESTJ": { url: "https://link.coupang.com/a/d0XVfo", text: "시간이 금이다! 초고속 탁상시계 보러가기" },
+                "ESFJ": { url: "https://link.coupang.com/a/d0XVfo", text: "센스 있는 집들이/생일 선물 세트 보러가기" },
+                "ENFJ": { url: "https://link.coupang.com/a/d0XVfo", text: "나눔의 기쁨, 친환경 비건 세트 보러가기" },
+                "INFJ": { url: "https://link.coupang.com/a/d0XVfo", text: "마음의 평화, 프리미엄 인센스 스틱 보러가기" }
+            };
+            const myCoupang = coupangData[m] || coupangData["ENTJ"];
+
+            document.getElementById('res-rank').innerText = `${res.rank} Class`;
+            document.getElementById('res-emoji').innerText = res.emoji;
+            document.getElementById('res-mbti').innerText = m;
+            document.getElementById('res-title').innerText = res.title;
+            document.getElementById('res-desc').innerText = res.desc;
+
+            // 새로 추가된 조언 및 행운 요소 바인딩
+            document.getElementById('res-advice').innerText = `"${res.advice}"`;
+            document.getElementById('res-color').innerText = res.luckyColor;
+            document.getElementById('res-number').innerText = res.luckyNum;
+
+            document.getElementById('res-best-emoji').innerText = res.best.emoji;
+            document.getElementById('res-best-title').innerText = res.best.title;
+            document.getElementById('res-worst-emoji').innerText = res.worst.emoji;
+            document.getElementById('res-worst-title').innerText = res.worst.title;
+
+            const statsContainer = document.getElementById('stats-container');
+            statsContainer.innerHTML = '';
+            const statColors = ['#fbbf24', '#38bdf8', '#a78bfa']; 
+            let i = 0;
+            for(let [label, val] of Object.entries(res.stats)) {
+                const color = statColors[i % 3];
+                statsContainer.innerHTML += `<div><div class="flex justify-between text-xs font-bold mb-2"><span class="text-slate-300 tracking-wider">${label}</span><span style="color: ${color}">${val}</span></div><div class="progress-track h-2 bg-slate-800"><div class="progress-fill" style="width: 0%; background: ${color}; box-shadow: 0 0 10px ${color}"></div></div></div>`;
+                i++;
+            }
+            setTimeout(() => {
+                const fills = statsContainer.querySelectorAll('.progress-fill');
+                let j = 0;
+                for(let val of Object.values(res.stats)) { if(fills[j]) fills[j].style.width = `${val}%`; j++; }
+            }, 300);
+
+            // 쿠팡 파트너스 생성
+            const coupangContainer = document.getElementById('coupang-banner-container');
+            if(coupangContainer) {
+                coupangContainer.innerHTML = `
+                    <div class="p-5 glass-panel border border-yellow-500/30 relative overflow-hidden group">
+                        <div class="absolute inset-0 bg-yellow-500/5 group-hover:bg-yellow-500/10 transition-colors"></div>
+                        <p class="text-yellow-400 text-[11px] font-bold mb-3 text-center uppercase tracking-widest relative z-10 flex items-center justify-center gap-1"><span>🎁</span> 수호령의 추천 아이템</p>
+                        <button onclick="window.open('${myCoupang.url}', '_blank')" 
+                                class="w-full py-4 bg-gradient-to-r from-yellow-600 to-yellow-500 hover:from-yellow-500 hover:to-yellow-400 text-slate-900 rounded-xl font-black text-sm shadow-[0_0_20px_rgba(234,179,8,0.3)] active:scale-95 transition-all relative z-10 break-keep">
+                            ${myCoupang.text}
+                        </button>
+                        <p class="text-[9px] text-slate-500 mt-4 text-center leading-relaxed relative z-10">
+                            "이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다."
+                        </p>
+                    </div>
+                `;
+            }
+        }
+
+        function copyLink() {
+            const t = document.createElement("input"); document.body.appendChild(t);
+            t.value = window.location.href; t.select(); document.execCommand("copy"); document.body.removeChild(t); 
+            const toast = document.getElementById('toast'); toast.style.opacity = '1';
+            setTimeout(() => { toast.style.opacity = '0'; }, 2500);
+        }
+    </script>
+</body>
+</html>
