@@ -3,22 +3,22 @@
 <head>
     <meta name="google-adsense-account" content="ca-pub-4798854035184105">
     <meta name="naver-site-verification" content="131cb24e4efe148346c2dff7fa6c20c1f7552d01" />
-    <!-- 📊 구글 애널리틱스 (CCTV) - 신규 프로젝트용으로 나중에 ID만 교체하세요 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TFQW5QDPS4"></script>
+    
+    <!-- 📊 구글 애널리틱스 (CCTV) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0F0EVZSHX7"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-0F0EVZSHX7');
     </script>
-
-    <!-- 💰 카카오 애드핏 & 구글 애드센스 -->
+    
+    <!-- 💰 구글 애드센스 (구글은 미리 달아둬도 상관없습니다) -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4798854035184105" crossorigin="anonymous"></script>
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
-    <!-- SEO 및 소셜 공유 태그 -->
     <title>내 지갑 수호령 소환 | 금전운 재테크 MBTI 테스트</title>
     <meta name="description" content="나의 소비 습관과 재테크 성향을 분석해서 내 지갑을 지키는 판타지 수호령을 소환해보세요!">
     <meta name="keywords" content="MBTI, 금전운 테스트, 재테크 성향, 소비 습관, 심리 테스트, 수호령 테스트">
@@ -32,46 +32,26 @@
         @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;600;700;800;900&display=swap');
         
         :root {
-            --primary-glow: rgba(251, 191, 36, 0.6); /* Gold Glow */
-            --bg-dark: #011410; /* 아주 깊고 어두운 금고/숲 색상 (Deepest Green) */
+            --primary-glow: rgba(251, 191, 36, 0.6);
+            --bg-dark: #011410; /* 딥 에메랄드 (금고색) */
         }
 
         body {
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-dark);
+            margin: 0; padding: 0; background-color: var(--bg-dark);
             font-family: 'Pretendard', sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            color: white;
-            overflow-x: hidden;
-            -webkit-tap-highlight-color: transparent;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            min-height: 100vh; color: white; overflow-x: hidden; -webkit-tap-highlight-color: transparent;
         }
 
         #app-container {
-            position: relative;
-            width: 100%;
-            max-width: 420px;
-            height: 100vh;
-            max-height: 850px;
+            position: relative; width: 100%; max-width: 420px; height: 100vh; max-height: 850px;
             background: #022c22; 
             box-shadow: 0 0 100px rgba(0, 0, 0, 0.9), inset 0 0 60px rgba(251, 191, 36, 0.1);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            z-index: 10;
+            overflow: hidden; display: flex; flex-direction: column; z-index: 10;
         }
 
         @media (min-width: 640px) {
-            #app-container {
-                height: 85vh;
-                border-radius: 36px;
-                border: 1px solid rgba(251, 191, 36, 0.3);
-                margin: 10px 0;
-            }
+            #app-container { height: 85vh; border-radius: 36px; border: 1px solid rgba(251, 191, 36, 0.3); margin: 10px 0; }
         }
 
         #bg-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
@@ -87,7 +67,6 @@
         .slide-up { animation: slideUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
         .pulse-slow { animation: pulseSlow 3s infinite alternate; }
 
-        /* ✨ 새로운 둥둥 떠다니는 애니메이션 추가 */
         @keyframes float {
             0% { transform: translateY(0px); }
             50% { transform: translateY(-15px); }
@@ -101,10 +80,8 @@
 
         .glass-panel { 
             background: linear-gradient(180deg, rgba(6, 78, 59, 0.7) 0%, rgba(2, 44, 34, 0.95) 100%); 
-            backdrop-filter: blur(12px); 
-            border: 1px solid rgba(251, 191, 36, 0.2); 
-            border-top: 2px solid rgba(251, 191, 36, 0.7); 
-            border-radius: 24px; 
+            backdrop-filter: blur(12px); border: 1px solid rgba(251, 191, 36, 0.2); 
+            border-top: 2px solid rgba(251, 191, 36, 0.7); border-radius: 24px; 
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), inset 0 10px 20px rgba(251, 191, 36, 0.05);
         }
         
@@ -112,20 +89,14 @@
         .option-btn:hover, .option-btn:active { transform: translateY(-2px); border-color: rgba(251, 191, 36, 1); box-shadow: 0 8px 25px rgba(251, 191, 36, 0.3); background: linear-gradient(145deg, rgba(4, 120, 87, 0.9) 0%, rgba(6, 78, 59, 0.95) 100%); }
 
         .text-gradient-gold { background: linear-gradient(to right, #fde047, #f59e0b, #fde047); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-size: 200% auto; animation: shine 3s linear infinite; }
-        
         @keyframes shine { to { background-position: 200% center; } }
 
         .progress-track { background: rgba(0, 0, 0, 0.6); border-radius: 99px; height: 8px; overflow: hidden; border: 1px solid rgba(251, 191, 36, 0.3); }
         .progress-fill { 
-            height: 100%; 
-            background: linear-gradient(90deg, #f59e0b 0%, #fef08a 50%, #f59e0b 100%); 
-            background-size: 200% 100%;
-            border-radius: 99px; 
-            transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1); 
-            box-shadow: 0 0 20px rgba(251, 191, 36, 0.9); 
-            animation: goldShine 2s linear infinite; 
+            height: 100%; background: linear-gradient(90deg, #f59e0b 0%, #fef08a 50%, #f59e0b 100%); 
+            background-size: 200% 100%; border-radius: 99px; transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1); 
+            box-shadow: 0 0 20px rgba(251, 191, 36, 0.9); animation: goldShine 2s linear infinite; 
         }
-        
         @keyframes goldShine { 0% { background-position: 100% 0; } 100% { background-position: -100% 0; } }
 
         .ad-container { width: 100%; max-width: 420px; min-height: 50px; background: rgba(255, 255, 255, 0.02); display: flex; align-items: center; justify-content: center; font-size: 11px; color: #475569; border: 1px dashed rgba(255, 255, 255, 0.05); margin: 5px 0; border-radius: 12px; z-index: 20; position: relative;}
@@ -133,17 +104,14 @@
 </head>
 <body>
 
-    <!-- 상단 배너 광고 영역 -->
-    <div class="ad-container">
-        <ins class="kakao_ad_area" style="display:none;" 
-         data-ad-unit    = "DAN-ByNkcek86incz89m" 
-         data-ad-width   = "320" 
-         data-ad-height  = "50"></ins> 
-        <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+    <!-- 🛑 카카오 애드핏 심사를 위해 상단 광고 코드를 임시로 비워둡니다 🛑 -->
+    <div class="ad-container" id="ad-top">
+        <p>Kakao AdFit 승인 대기중...</p>
+        <!-- 카카오에서 '승인'이 떨어지면, 이 글자를 지우고 DAN-HE97UaebDPwbrcBO 코드를 넣으세요! -->
     </div>
 
     <div id="app-container">
-        <!-- 배경 캔버스 (황금빛 입자) -->
+        <!-- 배경 캔버스 (회전하는 보석) -->
         <canvas id="bg-canvas"></canvas>
         <div class="vignette"></div>
 
@@ -153,7 +121,6 @@
             <div id="screen-start" class="screen active justify-center items-center text-center">
                 <div class="relative mb-8 pulse-slow">
                     <div class="absolute inset-0 bg-yellow-400 rounded-full blur-[70px] opacity-40"></div>
-                    <!-- ✨ animate-float 클래스 추가로 둥둥 떠다니는 효과 부여 -->
                     <span class="text-8xl relative z-10 drop-shadow-[0_0_30px_rgba(251,191,36,1)] animate-float">🪙</span>
                 </div>
                 <p class="text-yellow-400 font-bold tracking-[0.3em] text-xs mb-3 uppercase">Wealth Guardian Test</p>
@@ -167,7 +134,7 @@
                     금고 문 열기
                 </button>
                 
-                <!-- 📖 도감 버튼 추가 -->
+                <!-- 📖 도감 버튼 -->
                 <button onclick="switchScreen('screen-encyclopedia')" class="w-full py-4 rounded-2xl bg-emerald-950/50 border border-yellow-500/40 text-yellow-400 font-bold text-sm hover:bg-emerald-900/80 transition-all active:scale-95 flex justify-center items-center gap-2">
                     <span>📜</span> 수호령 대도서관 열람 (MBTI)
                 </button>
@@ -209,7 +176,6 @@
                 <div class="relative w-32 h-32 mb-8 flex items-center justify-center">
                     <div class="absolute inset-0 border-4 border-yellow-500/20 rounded-full"></div>
                     <div class="absolute inset-0 border-4 border-yellow-400 rounded-full border-t-transparent animate-spin"></div>
-                    <!-- ✨ animate-float 추가 -->
                     <span class="text-5xl animate-pulse animate-float">📜</span>
                 </div>
                 <h2 class="text-xl font-bold text-white mb-3">운명의 족자 해독 중...</h2>
@@ -235,7 +201,7 @@
                         <p id="res-desc" class="text-slate-200 text-sm leading-[1.7] break-keep">설명 텍스트</p>
                     </div>
 
-                    <!-- 💡 수호령의 일침 및 행운 요소 추가 -->
+                    <!-- 💡 수호령의 일침 및 행운 요소 -->
                     <div class="glass-panel p-5 mb-6 border-t-indigo-500">
                         <h3 class="text-indigo-400 font-bold text-[11px] uppercase tracking-wider mb-2 flex items-center"><span class="mr-2">💡</span> 수호령의 뼈때리는 조언</h3>
                         <p id="res-advice" class="text-white font-bold text-sm mb-3 break-keep">조언 텍스트</p>
@@ -269,11 +235,11 @@
                         <div id="stats-container" class="space-y-5"></div>
                     </div>
 
-                    <!-- 🛒 쿠팡 파트너스 배너 (수호령 맞춤형) -->
+                    <!-- 🛒 쿠팡 파트너스 배너 -->
                     <div id="coupang-banner-container" class="mb-6"></div>
 
-                    <!-- 🔥 트래픽 무한 복사를 위한 '전작 크로스 링킹' 버튼 -->
-                    <button onclick="window.open('https://rpg-mbti-test.vercel.app/', '_blank')" class="w-full py-4 mb-8 bg-slate-800 hover:bg-slate-700 border border-slate-600 text-slate-200 rounded-xl font-bold text-sm shadow-lg transition-all active:scale-95 flex items-center justify-center gap-2">
+                    <!-- 🔥 전작 크로스 링킹 -->
+                    <button onclick="window.open('https://rpg-mbti-test.vercel.app/', '_blank')" class="w-full py-4 mb-8 bg-emerald-950/80 hover:bg-emerald-900 border border-emerald-700/50 text-slate-200 rounded-xl font-bold text-sm shadow-lg transition-all active:scale-95 flex items-center justify-center gap-2">
                         <span>⚔️</span> 나의 RPG 길드장 직업도 알아보기
                     </button>
 
@@ -288,32 +254,25 @@
                 </div>
             </div>
 
-            <!-- 5. 대도서관 (SEO 및 수익화용 도감 스크린 추가) -->
+            <!-- 5. 대도서관 -->
             <div id="screen-encyclopedia" class="screen pb-12">
                 <div class="slide-up">
                     <button onclick="switchScreen('screen-start')" class="mb-6 text-yellow-500 font-bold text-sm flex items-center hover:text-yellow-400 transition-colors">
                         ← 금고 입구로 돌아가기
                     </button>
-                    
                     <h1 class="text-2xl font-extrabold text-white mb-2">수호령 대도서관</h1>
                     <p class="text-slate-400 text-sm mb-8">16가지 금전운 수호령들의 성향 분석 아카이브입니다.</p>
-
-                    <div id="encyclopedia-content" class="space-y-6">
-                        <!-- 동적으로 자바스크립트에서 채워집니다 -->
-                    </div>
+                    <div id="encyclopedia-content" class="space-y-6"></div>
                 </div>
             </div>
 
         </div>
     </div>
 
-    <!-- 하단 배너 광고 영역 -->
-    <div class="ad-container">
-        <ins class="kakao_ad_area" style="display:none;" 
-         data-ad-unit    = "DAN-YbcXPL4BSGFIlIg9" 
-         data-ad-width   = "320" 
-         data-ad-height  = "50"></ins> 
-        <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+    <!-- 🛑 카카오 애드핏 심사를 위해 하단 광고 코드도 임시로 비워둡니다 🛑 -->
+    <div class="ad-container" id="ad-bottom">
+        <p>Kakao AdFit 승인 대기중...</p>
+        <!-- 카카오에서 '승인'이 떨어지면, 이 글자를 지우고 DAN-YbcXPL4BSGFIlIg9 코드를 넣으세요! -->
     </div>
 
     <!-- 토스트 메시지 -->
@@ -322,10 +281,10 @@
     </div>
 
     <script>
-        // --- ✨ 진동 피드백 함수 (모바일 전용) ---
+        // --- ✨ 진동 피드백 함수 ---
         function triggerHaptic() {
             if (window.navigator && window.navigator.vibrate) {
-                window.navigator.vibrate(50); // 50ms 동안 짧은 진동
+                window.navigator.vibrate(50);
             }
         }
 
@@ -445,15 +404,17 @@
         }
         generateEncyclopedia();
 
+        // 🎉 에러를 유발했던 괄호와 위치 완벽 수정 완료
         function switchScreen(screenId) {
-            triggerHaptic(); // 버튼 누를때마다 진동
+            triggerHaptic(); 
             document.querySelectorAll('.screen').forEach(el => el.classList.remove('active'));
             const target = document.getElementById(screenId);
             target.classList.add('active');
             if(screenId === 'screen-result') target.scrollTop = 0;
         }
 
-        function startGame() {
+        // 글로벌 스코프에 정상적으로 위치한 startGame 함수
+        window.startGame = function() {
             triggerHaptic();
             qIndex = 0; scores = { E:0, I:0, S:0, N:0, T:0, F:0, J:0, P:0 };
             updateQuestion(); switchScreen('screen-question');
@@ -474,8 +435,8 @@
             qContainer.classList.remove('fade-in'); void qContainer.offsetWidth; qContainer.classList.add('fade-in');
         }
 
-        function handleAnswer(choice) {
-            triggerHaptic(); // 대답 선택 시 진동
+        window.handleAnswer = function(choice) {
+            triggerHaptic(); 
             const q = questions[qIndex];
             scores[choice === 'A' ? q.vA : q.vB]++;
             qIndex++;
@@ -567,8 +528,7 @@
             }
         }
 
-        // ✨ Web Share API (스마트폰 기본 공유창 띄우기)
-        function copyLink() {
+        window.copyLink = function() {
             triggerHaptic();
             if (navigator.share) {
                 navigator.share({
@@ -577,7 +537,6 @@
                     url: window.location.href
                 }).catch(console.error);
             } else {
-                // PC 등 Share API를 지원하지 않는 경우 기존 복사 방식 사용
                 const t = document.createElement("input"); document.body.appendChild(t);
                 t.value = window.location.href; t.select(); document.execCommand("copy"); document.body.removeChild(t); 
                 const toast = document.getElementById('toast'); toast.style.opacity = '1';
@@ -587,3 +546,4 @@
     </script>
 </body>
 </html>
+
