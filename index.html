@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta name="google-adsense-account" content="ca-pub-4798854035184105">
+    <meta name="google-adsense-account" content="ca-pub-4798854035184105">
     <meta name="naver-site-verification" content="131cb24e4efe148346c2dff7fa6c20c1f7552d01" />
     <!-- 📊 구글 애널리틱스 (CCTV) - 신규 프로젝트용으로 나중에 ID만 교체하세요 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-TFQW5QDPS4"></script>
@@ -25,7 +25,6 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="내 지갑을 지키는 수호령은? | 금전운 MBTI">
     <meta property="og:description" content="12가지 질문으로 알아보는 나의 소비/재테크 성향과 환상의 수호령 소환!">
-    <!-- 이미지 경로는 추후 마스터님이 만든 썸네일로 변경하세요 -->
     <meta property="og:image" content="https://raw.githubusercontent.com/happyplayer0914-art/wealth-mbti/refs/heads/main/og-image.png">
     
     <script src="https://cdn.tailwindcss.com"></script>
@@ -33,8 +32,8 @@
         @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;600;700;800;900&display=swap');
         
         :root {
-            --primary-glow: rgba(251, 191, 36, 0.5); /* Gold Glow */
-            --bg-dark: #020617; /* Deepest Navy */
+            --primary-glow: rgba(251, 191, 36, 0.6); /* Gold Glow */
+            --bg-dark: #011410; /* 아주 깊고 어두운 금고/숲 색상 (Deepest Green) */
         }
 
         body {
@@ -58,8 +57,8 @@
             max-width: 420px;
             height: 100vh;
             max-height: 850px;
-            background: #0f172a;
-            box-shadow: 0 0 100px rgba(0, 0, 0, 0.9), inset 0 0 50px rgba(251, 191, 36, 0.05);
+            background: #022c22; 
+            box-shadow: 0 0 100px rgba(0, 0, 0, 0.9), inset 0 0 60px rgba(251, 191, 36, 0.1);
             overflow: hidden;
             display: flex;
             flex-direction: column;
@@ -70,13 +69,13 @@
             #app-container {
                 height: 85vh;
                 border-radius: 36px;
-                border: 1px solid rgba(251, 191, 36, 0.2);
+                border: 1px solid rgba(251, 191, 36, 0.3);
                 margin: 10px 0;
             }
         }
 
         #bg-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
-        .vignette { position: absolute; inset: 0; background: radial-gradient(circle at center, transparent 20%, var(--bg-dark) 100%); z-index: 2; pointer-events: none; }
+        .vignette { position: absolute; inset: 0; background: radial-gradient(circle at center, transparent 10%, var(--bg-dark) 100%); z-index: 2; pointer-events: none; }
         
         #ui-layer { position: relative; z-index: 10; width: 100%; height: 100%; display: flex; flex-direction: column; }
         
@@ -88,19 +87,46 @@
         .slide-up { animation: slideUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
         .pulse-slow { animation: pulseSlow 3s infinite alternate; }
 
+        /* ✨ 새로운 둥둥 떠다니는 애니메이션 추가 */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float { animation: float 4s ease-in-out infinite; display: inline-block; }
+
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes pulseSlow { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(1.05); opacity: 1; } }
 
-        .glass-panel { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(251, 191, 36, 0.15); border-radius: 24px; }
+        .glass-panel { 
+            background: linear-gradient(180deg, rgba(6, 78, 59, 0.7) 0%, rgba(2, 44, 34, 0.95) 100%); 
+            backdrop-filter: blur(12px); 
+            border: 1px solid rgba(251, 191, 36, 0.2); 
+            border-top: 2px solid rgba(251, 191, 36, 0.7); 
+            border-radius: 24px; 
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), inset 0 10px 20px rgba(251, 191, 36, 0.05);
+        }
         
-        .option-btn { width: 100%; background: linear-gradient(145deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.95) 100%); border: 1px solid rgba(251, 191, 36, 0.3); border-radius: 20px; padding: 20px; text-align: left; transition: all 0.3s ease; display: flex; align-items: center; gap: 16px; cursor: pointer; }
-        .option-btn:hover, .option-btn:active { transform: translateY(-2px); border-color: rgba(251, 191, 36, 0.9); box-shadow: 0 8px 25px rgba(251, 191, 36, 0.2); background: linear-gradient(145deg, rgba(51, 65, 85, 0.9) 0%, rgba(30, 41, 59, 0.95) 100%); }
+        .option-btn { width: 100%; background: linear-gradient(145deg, rgba(6, 78, 59, 0.8) 0%, rgba(2, 44, 34, 0.95) 100%); border: 1px solid rgba(251, 191, 36, 0.3); border-radius: 20px; padding: 20px; text-align: left; transition: all 0.3s ease; display: flex; align-items: center; gap: 16px; cursor: pointer; }
+        .option-btn:hover, .option-btn:active { transform: translateY(-2px); border-color: rgba(251, 191, 36, 1); box-shadow: 0 8px 25px rgba(251, 191, 36, 0.3); background: linear-gradient(145deg, rgba(4, 120, 87, 0.9) 0%, rgba(6, 78, 59, 0.95) 100%); }
 
-        .text-gradient-gold { background: linear-gradient(to right, #fde047, #f59e0b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .text-gradient-gold { background: linear-gradient(to right, #fde047, #f59e0b, #fde047); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-size: 200% auto; animation: shine 3s linear infinite; }
+        
+        @keyframes shine { to { background-position: 200% center; } }
 
-        .progress-track { background: rgba(255, 255, 255, 0.05); border-radius: 99px; height: 6px; overflow: hidden; }
-        .progress-fill { height: 100%; background: linear-gradient(90deg, #fcd34d, #f59e0b); border-radius: 99px; transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 0 10px rgba(245, 158, 11, 0.8); }
+        .progress-track { background: rgba(0, 0, 0, 0.6); border-radius: 99px; height: 8px; overflow: hidden; border: 1px solid rgba(251, 191, 36, 0.3); }
+        .progress-fill { 
+            height: 100%; 
+            background: linear-gradient(90deg, #f59e0b 0%, #fef08a 50%, #f59e0b 100%); 
+            background-size: 200% 100%;
+            border-radius: 99px; 
+            transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1); 
+            box-shadow: 0 0 20px rgba(251, 191, 36, 0.9); 
+            animation: goldShine 2s linear infinite; 
+        }
+        
+        @keyframes goldShine { 0% { background-position: 100% 0; } 100% { background-position: -100% 0; } }
 
         .ad-container { width: 100%; max-width: 420px; min-height: 50px; background: rgba(255, 255, 255, 0.02); display: flex; align-items: center; justify-content: center; font-size: 11px; color: #475569; border: 1px dashed rgba(255, 255, 255, 0.05); margin: 5px 0; border-radius: 12px; z-index: 20; position: relative;}
     </style>
@@ -126,22 +152,23 @@
             <!-- 1. 시작 화면 -->
             <div id="screen-start" class="screen active justify-center items-center text-center">
                 <div class="relative mb-8 pulse-slow">
-                    <div class="absolute inset-0 bg-yellow-500 rounded-full blur-[60px] opacity-30"></div>
-                    <span class="text-8xl relative z-10 drop-shadow-[0_0_20px_rgba(251,191,36,0.8)]">🪙</span>
+                    <div class="absolute inset-0 bg-yellow-400 rounded-full blur-[70px] opacity-40"></div>
+                    <!-- ✨ animate-float 클래스 추가로 둥둥 떠다니는 효과 부여 -->
+                    <span class="text-8xl relative z-10 drop-shadow-[0_0_30px_rgba(251,191,36,1)] animate-float">🪙</span>
                 </div>
-                <p class="text-yellow-500 font-bold tracking-[0.3em] text-xs mb-3 uppercase">Wealth Guardian Test</p>
+                <p class="text-yellow-400 font-bold tracking-[0.3em] text-xs mb-3 uppercase">Wealth Guardian Test</p>
                 <h1 class="text-4xl font-black text-white mb-6 leading-tight drop-shadow-lg">
                     내 지갑을 지키는<br><span class="text-gradient-gold">수호령 소환</span>
                 </h1>
-                <p class="text-slate-400 text-sm mb-12 leading-relaxed">
+                <p class="text-emerald-100/70 text-sm mb-12 leading-relaxed">
                     당신의 소비 습관과 재테크 성향 속에<br>어떤 영물이 잠들어 있는지 확인해보세요.
                 </p>
-                <button onclick="startGame()" class="w-full py-5 rounded-2xl bg-gradient-to-r from-yellow-500 to-yellow-600 text-slate-900 font-black text-lg hover:shadow-[0_0_30px_rgba(251,191,36,0.4)] transition-all active:scale-95 mb-4">
+                <button onclick="startGame()" class="w-full py-5 rounded-2xl bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 text-slate-900 font-black text-lg shadow-[0_0_30px_rgba(251,191,36,0.6)] hover:shadow-[0_0_40px_rgba(251,191,36,0.8)] transition-all active:scale-95 mb-4 border border-yellow-300">
                     금고 문 열기
                 </button>
                 
                 <!-- 📖 도감 버튼 추가 -->
-                <button onclick="switchScreen('screen-encyclopedia')" class="w-full py-4 rounded-2xl bg-transparent border border-yellow-500/30 text-yellow-500 font-bold text-sm hover:bg-yellow-900/30 transition-all active:scale-95 flex justify-center items-center gap-2">
+                <button onclick="switchScreen('screen-encyclopedia')" class="w-full py-4 rounded-2xl bg-emerald-950/50 border border-yellow-500/40 text-yellow-400 font-bold text-sm hover:bg-emerald-900/80 transition-all active:scale-95 flex justify-center items-center gap-2">
                     <span>📜</span> 수호령 대도서관 열람 (MBTI)
                 </button>
             </div>
@@ -182,7 +209,8 @@
                 <div class="relative w-32 h-32 mb-8 flex items-center justify-center">
                     <div class="absolute inset-0 border-4 border-yellow-500/20 rounded-full"></div>
                     <div class="absolute inset-0 border-4 border-yellow-400 rounded-full border-t-transparent animate-spin"></div>
-                    <span class="text-5xl animate-pulse">📜</span>
+                    <!-- ✨ animate-float 추가 -->
+                    <span class="text-5xl animate-pulse animate-float">📜</span>
                 </div>
                 <h2 class="text-xl font-bold text-white mb-3">운명의 족자 해독 중...</h2>
                 <p class="text-sm text-yellow-500/80">당신을 따르는 수호령을 소환합니다</p>
@@ -197,18 +225,18 @@
                     <div class="text-center pt-6 pb-8">
                         <p class="text-yellow-500 font-bold tracking-widest text-[10px] mb-2 uppercase">Your Guardian Spirit</p>
                         <div id="res-rank" class="text-3xl font-black text-slate-400 mb-2">RANK S</div>
-                        <div id="res-emoji" class="text-8xl mb-4 filter drop-shadow-[0_0_30px_rgba(251,191,36,0.3)]">🐉</div>
+                        <div id="res-emoji" class="text-8xl mb-4 filter drop-shadow-[0_0_30px_rgba(251,191,36,0.3)] animate-float">🐉</div>
                         <p id="res-mbti" class="text-slate-500 font-black tracking-[0.2em] text-sm mb-2">ENTJ</p>
                         <h2 id="res-title" class="text-3xl font-extrabold text-gradient-gold mb-2 break-keep">황금을 지배하는 흑룡</h2>
                     </div>
 
-                    <div class="glass-panel p-5 mb-6 border-l-4 border-l-yellow-400 shadow-[0_4px_20px_rgba(251,191,36,0.1)]">
+                    <div class="glass-panel p-5 mb-6">
                         <h3 class="text-yellow-400 font-bold text-[11px] uppercase tracking-wider mb-2 flex items-center"><span class="mr-2">⚖️</span> 수호령의 특징</h3>
                         <p id="res-desc" class="text-slate-200 text-sm leading-[1.7] break-keep">설명 텍스트</p>
                     </div>
 
                     <!-- 💡 수호령의 일침 및 행운 요소 추가 -->
-                    <div class="glass-panel p-5 mb-6 border-l-4 border-l-indigo-400 shadow-[0_4px_20px_rgba(99,102,241,0.15)]">
+                    <div class="glass-panel p-5 mb-6 border-t-indigo-500">
                         <h3 class="text-indigo-400 font-bold text-[11px] uppercase tracking-wider mb-2 flex items-center"><span class="mr-2">💡</span> 수호령의 뼈때리는 조언</h3>
                         <p id="res-advice" class="text-white font-bold text-sm mb-3 break-keep">조언 텍스트</p>
                         <div class="flex gap-4 pt-3 border-t border-indigo-500/20">
@@ -224,12 +252,12 @@
                     </div>
 
                     <div class="grid grid-cols-2 gap-4 mb-8">
-                        <div class="glass-panel p-4 text-center bg-gradient-to-b from-blue-900/20 to-transparent">
+                        <div class="glass-panel p-4 text-center bg-gradient-to-b from-blue-900/20 to-transparent border-t-blue-500">
                             <p class="text-blue-400 text-[10px] font-bold uppercase tracking-wider mb-2">돈이 모이는 듀오</p>
                             <div id="res-best-emoji" class="text-4xl mb-1">☁️</div>
                             <p id="res-best-title" class="text-white font-bold text-[11px] break-keep">낭만 구름양</p>
                         </div>
-                        <div class="glass-panel p-4 text-center bg-gradient-to-b from-red-900/20 to-transparent">
+                        <div class="glass-panel p-4 text-center bg-gradient-to-b from-red-900/20 to-transparent border-t-rose-500">
                             <p class="text-red-400 text-[10px] font-bold uppercase tracking-wider mb-2">지갑 털리는 듀오</p>
                             <div id="res-worst-emoji" class="text-4xl mb-1">🐢</div>
                             <p id="res-worst-title" class="text-white font-bold text-[11px] break-keep">금고지기 거북이</p>
@@ -244,7 +272,7 @@
                     <!-- 🛒 쿠팡 파트너스 배너 (수호령 맞춤형) -->
                     <div id="coupang-banner-container" class="mb-6"></div>
 
-                    <!-- 🔥 트래픽 무한 복사를 위한 '전작 크로스 링킹' 버튼 (링크 수정됨) -->
+                    <!-- 🔥 트래픽 무한 복사를 위한 '전작 크로스 링킹' 버튼 -->
                     <button onclick="window.open('https://rpg-mbti-test.vercel.app/', '_blank')" class="w-full py-4 mb-8 bg-slate-800 hover:bg-slate-700 border border-slate-600 text-slate-200 rounded-xl font-bold text-sm shadow-lg transition-all active:scale-95 flex items-center justify-center gap-2">
                         <span>⚔️</span> 나의 RPG 길드장 직업도 알아보기
                     </button>
@@ -282,7 +310,7 @@
     <!-- 하단 배너 광고 영역 -->
     <div class="ad-container">
         <ins class="kakao_ad_area" style="display:none;" 
-         data-ad-unit    = "DAN-b36XXP3qWKQV4DIK" 
+         data-ad-unit    = "DAN-YbcXPL4BSGFIlIg9" 
          data-ad-width   = "320" 
          data-ad-height  = "50"></ins> 
         <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
@@ -290,10 +318,17 @@
 
     <!-- 토스트 메시지 -->
     <div id="toast" class="fixed bottom-10 left-1/2 transform -translate-x-1/2 bg-slate-800 text-yellow-400 px-6 py-3 rounded-full text-sm font-bold opacity-0 transition-opacity duration-300 pointer-events-none z-[100] border border-yellow-500/50 shadow-2xl">
-        링크가 성공적으로 복사되었습니다! 🪙
+        링크가 복사되었습니다! 🪙
     </div>
 
     <script>
+        // --- ✨ 진동 피드백 함수 (모바일 전용) ---
+        function triggerHaptic() {
+            if (window.navigator && window.navigator.vibrate) {
+                window.navigator.vibrate(50); // 50ms 동안 짧은 진동
+            }
+        }
+
         // --- Golden Canvas Background ---
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
@@ -307,12 +342,12 @@
         window.addEventListener('resize', resize);
         resize();
 
-        for(let i=0; i<50; i++) {
+        for(let i=0; i<60; i++) { 
             particles.push({ 
                 x: Math.random() * width, y: Math.random() * height, 
-                r: Math.random() * 2 + 0.5, 
-                vy: Math.random() * 0.8 + 0.2, vx: (Math.random() - 0.5) * 0.5, 
-                alpha: Math.random() * 0.5 + 0.2, phase: Math.random() * Math.PI * 2 
+                r: Math.random() * 3 + 1, 
+                vy: Math.random() * 1 + 0.3, vx: (Math.random() - 0.5) * 0.8, 
+                alpha: Math.random() * 0.6 + 0.3, phase: Math.random() * Math.PI * 2 
             });
         }
 
@@ -321,15 +356,29 @@
             const time = Date.now() * 0.002;
             particles.forEach(p => {
                 p.y -= p.vy; p.x += p.vx;
-                if(p.y < -10) p.y = height + 10;
-                if(p.x < -10) p.x = width + 10;
-                if(p.x > width + 10) p.x = -10;
-                const currentAlpha = p.alpha * (0.5 + Math.sin(time + p.phase) * 0.5);
+                if(p.y < -20) p.y = height + 20;
+                if(p.x < -20) p.x = width + 20;
+                if(p.x > width + 20) p.x = -20;
+                
+                const currentAlpha = p.alpha * (0.5 + Math.sin(time * 2 + p.phase) * 0.5);
+                
+                ctx.save();
+                ctx.translate(p.x, p.y);
+                ctx.rotate(time * 0.8 + p.phase); 
                 ctx.beginPath();
-                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(251, 191, 36, ${currentAlpha})`; // Gold particles
-                ctx.shadowBlur = 10; ctx.shadowColor = "rgba(251, 191, 36, 0.8)";
-                ctx.fill(); ctx.shadowBlur = 0;
+                const r = p.r * 2.5; 
+                ctx.moveTo(0, -r);
+                ctx.quadraticCurveTo(r/3, -r/3, r, 0);
+                ctx.quadraticCurveTo(r/3, r/3, 0, r);
+                ctx.quadraticCurveTo(-r/3, r/3, -r, 0);
+                ctx.quadraticCurveTo(-r/3, -r/3, 0, -r);
+                ctx.closePath();
+                
+                ctx.fillStyle = `rgba(253, 224, 71, ${currentAlpha})`; 
+                ctx.shadowBlur = 20; 
+                ctx.shadowColor = "rgba(251, 191, 36, 1)"; 
+                ctx.fill(); 
+                ctx.restore();
             });
             requestAnimationFrame(drawBackground);
         }
@@ -373,7 +422,6 @@
             "INFJ": { title: "미래를 보는 숲의 사슴", emoji: "🦌", rank: "A+", desc: "눈앞의 이익보다는 5년, 10년 뒤의 거대한 흐름을 보고 투자합니다. 겉보기엔 돈에 무관심해 보이지만 뒤에서 묵묵히 본인만의 거대한 성을 쌓고 있습니다.", advice: "생각만 하다가 좋은 타이밍을 놓칩니다. 과감해지세요!", luckyColor: "청록색", luckyNum: "4", stats: { "통찰력": 99, "인내심": 95, "충동소비": 10 }, best: { emoji: "🦝", title: "눈치백단 금여우" }, worst: { emoji: "⚡", title: "쾌속의 금빛 치타" } }
         };
 
-        // 도감 생성 함수
         function generateEncyclopedia() {
             const container = document.getElementById('encyclopedia-content');
             container.innerHTML = '';
@@ -395,10 +443,10 @@
                 `;
             }
         }
-        // 초기화 시 도감 생성
         generateEncyclopedia();
 
         function switchScreen(screenId) {
+            triggerHaptic(); // 버튼 누를때마다 진동
             document.querySelectorAll('.screen').forEach(el => el.classList.remove('active'));
             const target = document.getElementById(screenId);
             target.classList.add('active');
@@ -406,6 +454,7 @@
         }
 
         function startGame() {
+            triggerHaptic();
             qIndex = 0; scores = { E:0, I:0, S:0, N:0, T:0, F:0, J:0, P:0 };
             updateQuestion(); switchScreen('screen-question');
         }
@@ -426,6 +475,7 @@
         }
 
         function handleAnswer(choice) {
+            triggerHaptic(); // 대답 선택 시 진동
             const q = questions[qIndex];
             scores[choice === 'A' ? q.vA : q.vB]++;
             qIndex++;
@@ -449,7 +499,6 @@
             const m = (scores.E >= scores.I ? "E":"I") + (scores.S >= scores.N ? "S":"N") + (scores.T >= scores.F ? "T":"F") + (scores.J >= scores.P ? "J":"P");
             const res = resultsMap[m] || resultsMap["ENTJ"];
 
-            // --- 🛒 쿠팡 파트너스 아이템 매핑 (추후 마스터님이 링크 수정) ---
             const coupangData = {
                 "ENTJ": { url: "https://link.coupang.com/a/d1sN0N", text: "CEO의 품격, 최고급 몽블랑 만년필 보러가기" },
                 "INTJ": { url: "https://link.coupang.com/a/d1sO6Z", text: "집중력 MAX, 노이즈 캔슬링 이어폰 보러가기" },
@@ -476,7 +525,6 @@
             document.getElementById('res-title').innerText = res.title;
             document.getElementById('res-desc').innerText = res.desc;
 
-            // 새로 추가된 조언 및 행운 요소 바인딩
             document.getElementById('res-advice').innerText = `"${res.advice}"`;
             document.getElementById('res-color').innerText = res.luckyColor;
             document.getElementById('res-number').innerText = res.luckyNum;
@@ -492,16 +540,15 @@
             let i = 0;
             for(let [label, val] of Object.entries(res.stats)) {
                 const color = statColors[i % 3];
-                statsContainer.innerHTML += `<div><div class="flex justify-between text-xs font-bold mb-2"><span class="text-slate-300 tracking-wider">${label}</span><span style="color: ${color}">${val}</span></div><div class="progress-track h-2 bg-slate-800"><div class="progress-fill" style="width: 0%; background: ${color}; box-shadow: 0 0 10px ${color}"></div></div></div>`;
+                statsContainer.innerHTML += `<div><div class="flex justify-between text-xs font-bold mb-2"><span class="text-slate-300 tracking-wider">${label}</span><span style="color: ${color}">${val}</span></div><div class="progress-track h-2 bg-slate-800"><div class="h-full rounded-full transition-all duration-500" style="width: 0%; background: ${color}; box-shadow: 0 0 10px ${color}"></div></div></div>`;
                 i++;
             }
             setTimeout(() => {
-                const fills = statsContainer.querySelectorAll('.progress-fill');
+                const fills = statsContainer.querySelectorAll('div > div > div.h-full');
                 let j = 0;
                 for(let val of Object.values(res.stats)) { if(fills[j]) fills[j].style.width = `${val}%`; j++; }
             }, 300);
 
-            // 쿠팡 파트너스 생성
             const coupangContainer = document.getElementById('coupang-banner-container');
             if(coupangContainer) {
                 coupangContainer.innerHTML = `
@@ -520,18 +567,23 @@
             }
         }
 
+        // ✨ Web Share API (스마트폰 기본 공유창 띄우기)
         function copyLink() {
-            const t = document.createElement("input"); document.body.appendChild(t);
-            t.value = window.location.href; t.select(); document.execCommand("copy"); document.body.removeChild(t); 
-            const toast = document.getElementById('toast'); toast.style.opacity = '1';
-            setTimeout(() => { toast.style.opacity = '0'; }, 2500);
+            triggerHaptic();
+            if (navigator.share) {
+                navigator.share({
+                    title: '내 지갑 수호령 소환 테스트',
+                    text: '나의 소비 습관 속에 숨어있는 재물 수호령은 누구일까? 지금 바로 확인해보세요!',
+                    url: window.location.href
+                }).catch(console.error);
+            } else {
+                // PC 등 Share API를 지원하지 않는 경우 기존 복사 방식 사용
+                const t = document.createElement("input"); document.body.appendChild(t);
+                t.value = window.location.href; t.select(); document.execCommand("copy"); document.body.removeChild(t); 
+                const toast = document.getElementById('toast'); toast.style.opacity = '1';
+                setTimeout(() => { toast.style.opacity = '0'; }, 2500);
+            }
         }
     </script>
 </body>
-
 </html>
-
-
-
-
-
